@@ -1,0 +1,21 @@
+{
+  "name": "beaver",
+  "version": "0.0.0",
+  "description": "A build tool and mock server for font-end",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "build-tool",
+    "mock-erver"
+  ],
+  "author": "Brave Chan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "hexo-fs": "^1.0.2",
+    "mockjs": "^1.0.1-beta3"
+  }
+}
