@@ -1,6 +1,12 @@
-const express = require('express');
-const router = express.Router();
 
-router.get('/create/workplace', function(req, res, next) {
-  console.log('handle create work place');
-});
+
+
+module.exports = function(wpName = '', wpPath = '') {
+  console.log('handle create work place', wpName, wpPath);
+  return {
+    resCode: 200,
+    data: {
+      resCode: 200
+    }
+  };
+};
