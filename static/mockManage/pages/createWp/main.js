@@ -1,63 +1,119 @@
-import { Functor, Maybe, partial, pipe, curry, identity } from '../../../common/lib/gear/gear.js';
+import Request from '../../../common/lib/request/AjaxRequest.js';
+import HU from '../../utils/HttpUtil.js';
+
+import {
+  Functor,
+  Maybe,
+  partial,
+  pipe,
+  curry,
+  identity,
+  tap,
+  _
+} from '../../../common/lib/gear/gear.js';
+
+import {
+  insterMsg,
+  getChildrenDOM,
+  addEvent,
+  addChildrenEvents
+} from '../../common/utils/children.js';
+
+let vo = {
+  wpName: '',
+  wpPath: '',
+  wpList: [],
+  children: {
+    wpName: 'wpName',
+    wpPath: 'wpPath',
+    createBtn: 'createBtn',
+    msgBox: 'msgBox'
+  },
+  childrenEvents: {
+    createBtn: ['click', onCreateWpClick],
+    wpName: ['change', onWpNameChange],
+    wpPath: ['change', onWpPathChange]
+  }
+};
+
+// ====================================
 
 function init() {
   window.addEventListener('DOMContentLoaded', onDocReady);
 }
 
+/**
+ * doc准备完毕
+ */
 function onDocReady() {
-  let children = {
-    wpName: 'wpName',
-    createBtn: 'createBtn'
-  };
-  let obj = Functor.of(children)
+  window.removeEventListener('DOMContentLoaded', onDocReady);
+  vo.children = Functor.of(vo.children)
     .map(createChildren)
     .map(childrenCreated)
     .value();
 }
 
+/**
+ * 创建子对象集合
+ * @param {*} children
+ */
 function createChildren(children = {}) {
-  let getEL = pipe(getElById, curry(saveChild));
+  // let getEl = pipe(getElById, curry(saveChild));
   return Object.assign(
     {},
     children,
-    Functor.of(children)
-      .map(getEL(children.wpName)(children.wpName))
-      .map(function(children) {
-        console.log('get wpName?===>', children);
-        return children;
-      })
-      .map(getEL(children.createBtn)(children.wpName))
-      .map(function(children) {
-        console.log('get createBtn?===>', children);
-        return children;
-      })
+    Maybe.of(children)
+      .map(getChildrenDOM)
+      .map(tap(function(obj) {
+        console.log(obj);
+      }))
       .value()
   );
 }
 
+/**
+ * 子对象集合创建完毕
+ * @param {*} children
+ */
 function childrenCreated(children = {}) {
-
-  return children;
+  return Functor.of(children)
+    .map(curry(addChildrenEvents)(vo.childrenEvents, addEvent))
+    .value();
 }
 
-function getElById(id) {
-  console.log(id);
-  return document.getElementById(id);
-}
-
-function saveChild(el, key, children) {
-  console.log(el, key, children);
-  return Object.assign({}, children, {[key]: el});
-}
-
-function addEvent(el = {}, eventType = '', handler = error('handler must be a function')) {
-  el.addEventListener(eventType, handler);
-}
-
-function error(msg) {
-  return function(msg) {
-    console.error(msg);
+// ====================================
+async function onCreateWpClick(e) {
+  if (!vo.wpName || !vo.wpPath) {
+    return;
   }
+  console.log(`createWp ${e.type}`, e.target, e.currentTarget);
+
+  let msg = await Request.post(HU.CREATE_WORKPLACE, {
+    wpName: vo.wpName,
+    wpPath: vo.wpPath
+  })
+  .then(function(res) {
+    console.log(res);
+    return '请求成功!';
+  })
+  .catch(function(err) {
+    console.error(err);
+    return '请求失败!';
+  });
+  insterMsg(vo.children.msgBox, msg);
 }
 
+function onWpNameChange(e) {
+  console.log(`wpName ${e.type}`, e.target, e.currentTarget);
+  let input = e.target;
+  vo.wpName = input.value;
+}
+
+function onWpPathChange(e) {
+  console.log(`wpPath ${e.type}`, e.target, e.currentTarget);
+  let input = e.target;
+  vo.wpPath = input.value;
+}
+
+// ====================================
 init();

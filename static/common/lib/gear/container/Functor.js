@@ -19,7 +19,7 @@ class Functor {
   }
 
   value() {
-    return _value;
+    return this._value;
   }
 }
 
