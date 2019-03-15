@@ -8,16 +8,20 @@
   </section>
   <section>
     <h3>选择已创建的项目</h3>
-    <ul>
+    <ul id="projects" >
       <li>
         <span>项目一</span>
         <div>
-          <a href="javascript: void 0">启动mock服务</a>
-          <a href="javascript: void 0">修改项目配置</a>
+          <a href="/projects/controler">启动mock服务</a>
+          <a href="/projects/config">修改项目配置</a>
           <a href="javascript: void 0">删除项目</a>
         </div>
       </li>
     </ul>
   </section>
 </main>
+<div style="display: none;" >
+  <input id="wpId" type="text" value="{{wpId}}">
+</div>
 <footer></footer>
+<script type="module" src="/static/mockManage/pages/workplace/main.js" ></script>

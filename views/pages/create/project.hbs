@@ -3,49 +3,66 @@
   <a href="/workplace">返回项目管理</a>
 </header>
 <main>
+
   <section>
-    <h3>项目名称</h3>
-    <div>
-      <input type="text">
-    </div>
+    <section>
+      <header>
+        <h2>开发项目配置</h2>
+      </header>
+      <section>
+        <h3>项目目录</h3>
+        <div>
+          <input type="text" id="projectDir">
+        </div>
+      </section>
+
+      <section>
+        <h3>页面模板目录：</h3>
+        <div>
+          <input type="text" id="projectTempDir">
+        </div>
+      </section>
+
+      <section>
+        <h3>页面装饰模板目录：</h3>
+        <div>
+          <input type="text" id="projectDecorateDir">
+        </div>
+      </section>
+
+      <section>
+        <h3>打包发布时的页面类型：</h3>
+        <select name="" id="targetPageType">
+          <option value="">select</option>
+          <option value="jsp">jsp</option>
+        </select>
+      </section>
+
+    </section>
+
+    <section>
+      <header>
+        <h2>mock项目设置</h2>
+      </header>
+      <section>
+        <h3>mock项目名称</h3>
+        <div>
+          <input id="mockProName" type="text">
+        </div>
+      </section>
+
+      <section>
+        <h3>mock项目目录</h3>
+        <div>
+          <input type="text" id="mockProDir">
+        </div>
+      </section>
+    </section>
   </section>
 
   <section>
-    <h3>项目目录</h3>
-    <div>
-      <a href="javascript: void 0">
-        <input type="file" webkitdirectory>
-      </a>
-      <span>当前还没有选择项目目录</span>
-    </div>
+    <button id="createPro" >创建项目</button>
   </section>
-
-  <section>
-    <h3>页面模板目录：</h3>
-    <div>
-      <a href="javascript: void 0">
-        <input type="file" webkitdirectory>
-      </a>
-      <span>当前还没有选择页面模板目录</span>
-    </div>
-  </section>
-
-  <section>
-    <h3>页面装饰模板目录：</h3>
-    <div>
-      <a href="javascript: void 0">
-        <input type="file" webkitdirectory>
-      </a>
-      <span>当前还没有选择页面装饰模板目录</span>
-    </div>
-  </section>
-
-  <section>
-    <h3>打包发布时的页面类型：</h3>
-    <select name="" id="">
-      <option value="jsp2Hbs">jsp</option>
-    </select>
-  </section>
-
-
 </main>
+
+<script type="module" src="/static/mockManage/pages/createProject/main.js" ></script>

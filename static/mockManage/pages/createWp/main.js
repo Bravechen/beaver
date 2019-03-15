@@ -20,20 +20,22 @@ import {
 } from '../../common/utils/children.js';
 
 let vo = {
-  wpName: '',
-  wpPath: '',
-  wpList: [],
+  data: {
+    wpName: '',
+    wpPath: '',
+    wpList: []
+  },
   children: {
     wpName: 'wpName',
     wpPath: 'wpPath',
     createBtn: 'createBtn',
     msgBox: 'msgBox'
   },
-  childrenEvents: {
-    createBtn: ['click', onCreateWpClick],
-    wpName: ['change', onWpNameChange],
-    wpPath: ['change', onWpPathChange]
-  }
+  childrenEvents: [
+    ['createBtn', 'click', onCreateWpClick],
+    ['wpName', 'change', onWpNameChange],
+    ['wpPath', 'change', onWpPathChange]
+  ]
 };
 
 // ====================================

@@ -1,0 +1,23 @@
+<header>
+  <h1>项目: {{mockProName}}</h1>
+  <a href="/projects">返回项目管理</a>
+</header>
+<main>
+  <section>
+    <button id="setupMock" >启动mock服务器</button>
+    <button id="closeMock">关闭mock服务器</button>
+  </section>
+
+  <section>
+    <label for="choosePage">选择需要生成假数据模板的页面</label>
+    <select name="choosePage" id="choosePage">
+      <option value="">选择页面</option>
+      <option value="pagePath">pathName</option>
+    </select>
+    <div>
+      <button id="combineMockTemp">生成假数据页面并拷贝至开发项目的mock目录</button>
+    </div>
+  </section>
+</main>
+<footer></footer>
+<script type="module" src="/static/mockManage/pages/projectCtrl/main.js" ></script>

@@ -16,18 +16,22 @@
   </section> --}}
   <section>
     <h3>检测到工作区中有以下项目，您可以选择一个启动mock服务器：</h3>
-    <ul id="projects" >
-      <li>
-        <span>项目一</span>
-        <div>
-          <a href="javascript: void 0">设为默认工作区</a>
-          <a href="javascript: void 0">取消默认</a>
-          <a href="javascript: void 0">修改工作区配置</a>
-          <a href="javascript: void 0">删除工作区</a>
-        </div>
-      </li>
+    <ul id="workplaces" >
+      {{#each wpList}}
+        <li>
+          <span>{{name}}</span>
+          <div>
+            <a data-wp-id="{{id}}" data-type="setDefaultWp" href="javascript: void 0">设为默认工作区</a>
+            <a data-wp-id="{{id}}" data-type="cancelDefault" href="javascript: void 0">取消默认</a>
+            <a data-wp-id="{{id}}" data-type="changeWpConfig" href="javascript: void 0">修改工作区配置</a>
+            <a data-wp-id="{{id}}" data-type="deleteWp" href="javascript: void 0">删除工作区</a>
+          </div>
+        </li>
+      {{/each}}
+
     </ul>
   </section>
   <section id="msgBox" ></section>
 </main>
 <footer></footer>
+<script type="module" src="/static/mockManage/pages/home/main.js"></script>

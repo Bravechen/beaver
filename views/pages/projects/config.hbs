@@ -5,44 +5,76 @@
 
 <main>
   <section>
-    <h3>项目名称:</h3>
-    <div>
-      <span>{{projectName}}</span>
-      <a href="javascript: void 0">修改</a>
-    </div>
+
+    <section>
+      <header>
+        <h2>开发项目配置</h2>
+      </header>
+
+      <section>
+        <h3>项目目录：</h3>
+        <div>
+          <span>{{projectDir}}</span>
+          <a href="javascript: void 0">修改</a>
+        </div>
+      </section>
+
+      <section>
+        <h3>页面模板目录：</h3>
+        <div>
+          <span>{{pageTempDir}}</span>
+          <a href="javascript: void 0">修改</a>
+        </div>
+      </section>
+
+      <section>
+        <h3>页面装饰模板目录：</h3>
+        <div>
+          <span>{{decoratersDir}}</span>
+          <a href="javascript: void 0">修改</a>
+        </div>
+      </section>
+
+      <section>
+        <h3>打包发布时的页面类型：</h3>
+        <div>
+          <span>{{targetType}}</span>
+          <a href="javascript: void 0">修改</a>
+        </div>
+      </section>
+
+    </section>
+
+    <section>
+      <header>
+        <h2>mock项目配置</h2>
+      </header>
+
+      <section>
+        <h3>项目名称:</h3>
+        <div>
+          <span>{{mockProName}}</span>
+          <a href="javascript: void 0">修改</a>
+        </div>
+      </section>
+
+      <section>
+        <h3>项目目录：</h3>
+        <div>
+          <span>{{mockProDir}}</span>
+          <a href="javascript: void 0">修改</a>
+        </div>
+      </section>
+
+    </section>
   </section>
 
   <section>
-    <h3>项目目录：</h3>
-    <div>
-      <span>{{projectDir}}</span>
-      <a href="javascript: void 0">修改</a>
-    </div>
-  </section>
-
-  <section>
-    <h3>页面模板目录：</h3>
-    <div>
-      <span>{{pageTempDir}}</span>
-      <a href="javascript: void 0">修改</a>
-    </div>
-  </section>
-
-  <section>
-    <h3>页面装饰模板目录：</h3>
-    <div>
-      <span>{{decoratersDir}}</span>
-      <a href="javascript: void 0">修改</a>
-    </div>
-  </section>
-
-  <section>
-    <h3>打包发布时的页面类型：</h3>
-    <div>
-      <span>{{targetType}}</span>
-      <a href="javascript: void 0">修改</a>
-    </div>
+    <button>保存设置</button>
+    <button>取消修改</button>
   </section>
 </main>
 
 <footer></footer>
+
+<script type="module" src="/static/mockManage/pages/projectConfig/main.js" ></script>

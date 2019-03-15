@@ -7,4 +7,10 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/controler', function(req, res, next) {
+  res.render('./pages/projects/controler', {
+    title: '项目控制'
+  });
+});
+
 module.exports = router;

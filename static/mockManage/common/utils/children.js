@@ -26,11 +26,16 @@ function getChild(key, children) {
   return children[key];
 }
 
+/**
+ * 根据子对象集合获取dom中的子对象节点
+ * @param {*} children
+ */
 function getChildrenDOM(children) {
   let getEl = pipe(getElById, curry(saveChild));
-  return Object.keys(children).reduce(function(prev, item) {
-    return getEl(item)(item, prev);
-  }, children);
+  return Object.keys(children)
+          .reduce(function(prev, item) {
+            return getEl(item)(item, prev);
+          }, children);
 }
 
 /**
@@ -51,12 +56,14 @@ function addEvent(eventType, handler, el ) {
  * @param {*} children
  */
 function addChildrenEvents(childrenEvents, addEvent, children) {
-  return Object.keys(childrenEvents)
-    .reduce(function(prev, item) {
-      let ary = childrenEvents[item];
-      addEvent(ary[0], ary[1], prev[item]);
+  return childrenEvents.reduce(
+    function(prev, item) {
+      let el = item[0];
+      addEvent(item[1], item[2], prev[el]);
       return prev;
-    }, children);
+    },
+    children
+  );
 }
 
 function insterMsg(box, msg) {
