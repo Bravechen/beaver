@@ -1,5 +1,5 @@
 const fs = require('hexo-fs');
-const isDirExit = require('./isDirExit');
+const isDirExit = require('./isExist');
 
 function removeDir(path) {
   return new Promise(function(resolve, reject) {

@@ -18,11 +18,11 @@ const deleteProject = require('../src/projects/deleteProject');
 router.post('/createWorkplace', function(req, res, next) {
   let body = req.body || {};
   createWorkplace(body.wpName, body.wpPath)
-    .then(function(data) {
+    .then(function(data = {}) {
       console.log('/createWorkplace===>>>', body, data);
-      res.status(data.resCode)
+      res.status(data.resCode || 500)
         .set('Content-Type', 'text/plain')
-        .json(data.data);
+        .json(data.data || {} );
     })
     .catch(function(err) {
       console.error('/createWorkplace===>>> err', err);

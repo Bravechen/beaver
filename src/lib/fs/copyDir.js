@@ -1,5 +1,5 @@
 let fs = require('hexo-fs');
-const isDirExit = require('./isDirExit');
+const isDirExit = require('./isExist');
 
 function copy(src, dest, opt = {}) {
   return new Promise(function(resolve, reject) {

@@ -1,10 +1,10 @@
 
 function getSysId() {
-  return `${randomStr}-${randomStr}`;
+  return `${randomStr()}-${randomStr()}`;
 }
 
 function randomStr() {
-  return 0xffffff * Math.random().toString(16).replace(/\./, '');
+  return (0xffffff * Math.random()).toString(16).replace(/\./, '');
 }
 
 module.exports = {

@@ -1,19 +1,17 @@
 
-function createWPConfig(name = '', path = '') {
+function createWPConfig() {
   return {
-    [name]: {
-      path
-    }
+    projects: {}
   };
 }
 
 function createNPMConfig(wpName = '') {
   return `{
-    name: ${wpName},
-    version: '1.0.0',
-    private: true,
-    scripts: {},
-    dependencies: {
+    "name": "${wpName}",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {},
+    "dependencies": {
       "axios": "^0.18.0",
       "body-parser": "~1.18.2",
       "cookie-parser": "~1.4.3",
@@ -27,16 +25,8 @@ function createNPMConfig(wpName = '') {
   }`;
 }
 
-function createProjectsConfig() {
-  return `{
-    "workplace" : {},
-    "projects": {}
-  }`;
-}
-
 module.exports = {
   createWPConfig,
-  createNPMConfig,
-  createProjectsConfig
+  createNPMConfig
 };
 

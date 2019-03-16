@@ -1,5 +1,5 @@
 const fs = require('hexo-fs');
-const isDirExit = require('./isDirExit');
+const isDirExit = require('./isExist');
 
 function creat(path) {
   return new Promise(function(resolve, reject){

@@ -92,7 +92,7 @@ class Left {
   orElse(fn) {
     return isFunction(fn)
       ? fn(this._value)
-      : Either.Left({
+      : Either.left({
           message: `Expect the orElse()'s param is a function, not the ${
             isNull(fn) ? 'null' : typeof fn
           }.`
@@ -125,7 +125,7 @@ class Right {
   map(fn) {
     return isFunction(fn)
       ? Either.of(fn(this._value))
-      : Either.Left({
+      : Either.left({
           message: `Expect the map()'s param is a function, not the ${
             isNull(fn) ? 'null' : typeof fn
           }.`
